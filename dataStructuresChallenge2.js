@@ -61,3 +61,45 @@ const game = {
     team2: 6.5,
   },
 };
+
+// 1 creating separate teams
+const players1 = game.players[0];
+const players2 = game.players[1];
+console.log(players1, players2); // checking to make sure it's good
+
+// 2 using the rest syntax to separate the goalkeeper from the rest of the teams
+const [gk0, ...fieldPlayers0] = players1;
+const [gk1, ...fieldPlayers1] = players2;
+console.log(gk0, fieldPlayers0); // checking my variables work
+
+// 3 making a group with all the players by spreading the arrays into 1 array
+const allPlayers = [...players1, ...players2];
+
+console.log(allPlayers);
+
+//4 adding the substituted players
+const player1Final = [...players1, "Thiago", "Coutinho", "Perisic"];
+console.log(player1Final);
+
+// 5 destructuring an object
+const { team1, team2, x: draw } = game.odds;
+console.log(team1, team2, draw);
+
+// 6 using the rest in a function
+//pretty sure there is a better way .
+
+// const printGoals = (arrLength, ...arr) => {
+//   return `${arr}` + ` ..${arrLength.length}`;
+// };
+
+// console.log(printGoals(game.scored, game.scored));
+
+// this is the correct way to take the players out of the array
+const printGoals = (...arr) => {
+  return `${arr.length} were scored by ${arr}`;
+};
+
+console.log(printGoals(...game.scored));
+
+// 7.
+team1 < team2 || console.log(`Team 1 is more likely to win`);
